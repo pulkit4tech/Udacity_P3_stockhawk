@@ -3,11 +3,13 @@ package com.sam_chordas.android.stockhawk.ui;
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.CursorLoader;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
@@ -73,7 +75,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
       if (isConnected){
         startService(mServiceIntent);
       } else{
-        networkToast();
+        network_not_available();
       }
     }
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -123,7 +125,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
               })
               .show();
         } else {
-          networkToast();
+          network_not_available();
         }
 
       }
@@ -223,4 +225,17 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     mCursorAdapter.swapCursor(null);
   }
 
+  public void network_not_available(){
+    AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+    alertDialog.setTitle("Network Unavailable");
+    alertDialog.setMessage("Sorry!! you are not connected to internet");
+    alertDialog.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+      @Override
+      public void onClick(DialogInterface dialogInterface, int i) {
+        startService(mServiceIntent);
+      }
+    });
+    alertDialog.setNegativeButton("Cancel",null);
+    alertDialog.show();
+  }
 }
