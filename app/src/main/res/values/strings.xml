@@ -1,14 +1,19 @@
 <resources>
-  <string name="app_name" translatable="false">Stock Hawk</string>
+    <string name="app_name" translatable="false">Stock Hawk</string>
 
-  <string name="action_example" translatable="false">Example action</string>
+    <string name="action_example" translatable="false">Example action</string>
 
-  <string name="action_settings" translatable="false">Settings</string>
-  <string name="action_change_units" translatable="false">Change Units</string>
-  <string name="symbol_search" translatable="false">Symbol Search</string>
-  <string name="content_test" translatable="false">Search for a Stock Symbol</string>
-  <string name="input_hint" translatable="false">FB</string>
-  <string name="input_prefill" translatable="false"></string>
-  <string name="network_toast" translatable="false">Uh-oh! This app requires an internet connection</string>
-  <string name="fab_description" translatable="false">Add new stock</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="action_change_units" translatable="false">Change Units</string>
+    <string name="symbol_search" translatable="false">Symbol Search</string>
+    <string name="content_test" translatable="false">Search for a Stock Symbol</string>
+    <string name="input_hint" translatable="false">FB</string>
+    <string name="input_prefill" translatable="false"></string>
+    <string name="network_toast" translatable="false">Uh-oh! This app requires an internet connection</string>
+    <string name="fab_description" translatable="false">Add new stock</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="symbol" translatable="false">symbol</string>
+    <string name="bid_price" translatable="false">bid_price</string>
+    <string name="set_background" translatable="false">setBackgroundResource</string>
 </resources>
