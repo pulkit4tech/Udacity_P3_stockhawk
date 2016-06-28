@@ -21,19 +21,16 @@ public class WidgetProvider extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
-            // Create intent to launch MainActivity
             Intent intent = new Intent(context, MyStocksActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
             views.setOnClickPendingIntent(R.id.widget, pendingIntent);
 
-            // Set up collection
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
                 setRemoteAdapter(context, views);
             } else {
                 setRemoteAdapterV11(context, views);
             }
 
-            // Set up collection items
             Intent clickIntentTemplate = new Intent(context, MyStocksActivity.class);
             PendingIntent clickPendingIntentTemplate = TaskStackBuilder.create(context)
                     .addNextIntentWithParentStack(clickIntentTemplate)
@@ -43,24 +40,12 @@ public class WidgetProvider extends AppWidgetProvider {
         }
     }
 
-    /**
-     * Sets the remote adapter used to fill in the list items
-     *
-     * @param context the context used to launch the intent
-     * @param views RemoteViews to set the RemoteAdapter
-     */
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void setRemoteAdapter(Context context, @NonNull final RemoteViews views) {
         views.setRemoteAdapter(R.id.widget_list,
                 new Intent(context, WidgetRemoteViewsService.class));
     }
 
-    /**
-     * Sets the remote adapter used to fill in the list items
-     *
-     * @param context the context to launch the intent
-     * @param views RemoteViews to set the RemoteAdapter
-     */
     @SuppressWarnings("deprecation")
     private void setRemoteAdapterV11(Context context, @NonNull final RemoteViews views) {
         views.setRemoteAdapter(0, R.id.widget_list,
