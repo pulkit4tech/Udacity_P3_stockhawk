@@ -86,8 +86,10 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     recyclerView.addOnItemTouchListener(new RecyclerViewItemClickListener(this,
             new RecyclerViewItemClickListener.OnItemClickListener() {
               @Override public void onItemClick(View v, int position) {
-                //TODO:
-                // do something on item click
+                Intent intent = new Intent(mContext, GraphDetailActivity.class);
+                mCursor.moveToPosition(position);
+                intent.putExtra(getResources().getString(R.string.symbol), mCursor.getString(mCursor.getColumnIndex(getResources().getString(R.string.symbol))));
+                mContext.startActivity(intent);
               }
             }));
     recyclerView.setAdapter(mCursorAdapter);
@@ -118,7 +120,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                   } else {
                     // Add the stock to DB
                     mServiceIntent.putExtra("tag", "add");
-                    mServiceIntent.putExtra("symbol", input.toString());
+                    mServiceIntent.putExtra("symbol", input.toString().toUpperCase());
                     startService(mServiceIntent);
                   }
                 }
@@ -162,10 +164,6 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   public void onResume() {
     super.onResume();
     getLoaderManager().restartLoader(CURSOR_LOADER_ID, null, this);
-  }
-
-  public void networkToast(){
-    Toast.makeText(mContext, getString(R.string.network_toast), Toast.LENGTH_SHORT).show();
   }
 
   public void restoreActionBar() {
