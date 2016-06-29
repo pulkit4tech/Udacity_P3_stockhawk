@@ -88,7 +88,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
               @Override public void onItemClick(View v, int position) {
                 Intent intent = new Intent(mContext, GraphDetailActivity.class);
                 mCursor.moveToPosition(position);
-                intent.putExtra(getResources().getString(R.string.symbol), mCursor.getString(mCursor.getColumnIndex(getResources().getString(R.string.symbol))));
+                intent.putExtra("symbol", mCursor.getString(mCursor.getColumnIndex("symbol")));
                 mContext.startActivity(intent);
               }
             }));
@@ -112,7 +112,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
                       new String[] { input.toString() }, null);
                   if (c.getCount() != 0) {
                     Toast toast =
-                        Toast.makeText(MyStocksActivity.this, "This stock is already saved!",
+                        Toast.makeText(MyStocksActivity.this, R.string.toast_previously_saved_stock,
                             Toast.LENGTH_LONG);
                     toast.setGravity(Gravity.CENTER, Gravity.CENTER, 0);
                     toast.show();
@@ -225,15 +225,15 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
 
   public void network_not_available(){
     AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-    alertDialog.setTitle("Network Unavailable");
-    alertDialog.setMessage("Sorry!! you are not connected to internet");
-    alertDialog.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+    alertDialog.setTitle(R.string.dialog_title);
+    alertDialog.setMessage(R.string.dialog_message);
+    alertDialog.setPositiveButton(R.string.dialog_positive, new DialogInterface.OnClickListener() {
       @Override
       public void onClick(DialogInterface dialogInterface, int i) {
         startService(mServiceIntent);
       }
     });
-    alertDialog.setNegativeButton("Cancel",null);
+    alertDialog.setNegativeButton(R.string.dialog_negative,null);
     alertDialog.show();
   }
 }

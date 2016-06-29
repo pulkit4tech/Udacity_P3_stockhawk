@@ -44,10 +44,8 @@ public class GraphDetailActivity extends AppCompatActivity implements
                 .setGrid(ChartView.GridType.HORIZONTAL, new Paint(R.color.material_blue_700));
         Intent intent = getIntent();
         Bundle arguments = new Bundle();
-        arguments.putString(getResources()
-                        .getString(R.string.symbol),
-                intent.getStringExtra(getResources()
-                        .getString(R.string.symbol)));
+        arguments.putString("symbol",
+                intent.getStringExtra("symbol"));
         getLoaderManager().initLoader(0, arguments, this);
     }
 
@@ -55,7 +53,7 @@ public class GraphDetailActivity extends AppCompatActivity implements
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new CursorLoader(this, QuoteProvider.Quotes.CONTENT_URI, new String[]{QuoteColumns.BIDPRICE},
                 QuoteColumns.SYMBOL + " = ?",
-                new String[]{args.getString(getResources().getString(R.string.symbol))}, null);
+                new String[]{args.getString("symbol")}, null);
     }
 
     @TargetApi(Build.VERSION_CODES.M)
