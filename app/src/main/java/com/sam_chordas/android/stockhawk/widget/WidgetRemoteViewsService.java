@@ -12,11 +12,6 @@ import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
 
-/*
-* Created by Pulkit Bhatia on 27/06/2016
-*
-*/
-
 public class WidgetRemoteViewsService extends RemoteViewsService {
 
     @Override
@@ -84,14 +79,11 @@ public class WidgetRemoteViewsService extends RemoteViewsService {
                 } else {
                     remoteViews.setInt(R.id.change, "setBackgroundResource", R.drawable.percent_change_pill_red);
                 }
-
                 if (Utils.showPercent) {
                     remoteViews.setTextViewText(R.id.change, data.getString(data.getColumnIndex(QuoteColumns.PERCENT_CHANGE)));
                 } else {
                     remoteViews.setTextViewText(R.id.change, data.getString(data.getColumnIndex(QuoteColumns.CHANGE)));
                 }
-
-
                 return remoteViews;
             }
 

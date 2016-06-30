@@ -8,10 +8,15 @@
     <string name="input_hint" translatable="false">FB</string>
     <string name="input_prefill" translatable="false"></string>
     <string name="network_toast" translatable="false">Uh-oh! This app requires an internet connection</string>
-    <string name="fab_description" translatable="false">Add new stock</string>
-    <string name="toast_previously_saved_stock" translatable="false">This stock is already saved!</string>
-    <string name="dialog_title">Network Unavailable</string>
-    <string name="dialog_message">Sorry!! you are not connected to internet</string>
-    <string name="dialog_positive">Retry</string>
-    <string name="dialog_negative">Cancel</string>
+    <string name="fab_content_description" translatable="false">Add a new stock</string>
+
+
+    <!-- Alert Dialog Strings -->
+    <string name="alert_dialog_title" translatable="false">Network Unavailable</string>
+    <string name="alert_dialog_message" translatable="false">You\'re not connected to the internet</string>
+    <string name="alert_dialog_positive_button" translatable="false">Try Again</string>
+    <string name="alert_dialog_negative_button" translatable="false">Cancel</string>
+
+    <!-- Toast String -->
+    <string name="toast_stock_previously_saved" translatable="false">This stock is already saved!</string>
 </resources>
