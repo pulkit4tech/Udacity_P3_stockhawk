@@ -31,13 +31,16 @@ public class WidgetProvider extends AppWidgetProvider {
                 setRemoteAdapterV11(context, views);
             }
 
+
             Intent clickIntentTemplate = new Intent(context, MyStocksActivity.class);
             PendingIntent clickPendingIntentTemplate = TaskStackBuilder.create(context)
                     .addNextIntentWithParentStack(clickIntentTemplate)
                     .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
             views.setPendingIntentTemplate(R.id.widget_list, clickPendingIntentTemplate);
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId,R.id.widget_list);
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
+        super.onUpdate(context,appWidgetManager,appWidgetIds);
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
